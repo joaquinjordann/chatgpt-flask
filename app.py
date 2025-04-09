@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request, jsonify
-import openai
 import os
+from openai import OpenAI
 
 app = Flask(__name__)
 
-# Cargar API key desde variables de entorno
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# Nueva instancia del cliente OpenAI
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 @app.route("/")
 def index():
@@ -16,7 +16,7 @@ def chat():
     user_message = request.json.get("message")
 
     try:
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "Eres un asistente útil."},
