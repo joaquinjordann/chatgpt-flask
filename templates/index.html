@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot con ChatGPT</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #f4f4f4; }
+        #chat { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+        .msg { margin: 10px 0; }
+        .user { color: blue; }
+        .bot { color: green; }
+    </style>
+</head>
+<body>
+<div id="chat">
+    <h2>Chat con ChatGPT</h2>
+    <div id="messages"></div>
+    <input type="text" id="input" placeholder="Escribe tu mensaje..." style="width: 80%;">
+    <button onclick="send()">Enviar</button>
+</div>
+
+<script>
+    async function send() {
+        const input = document.getElementById("input");
+        const message = input.value;
+        if (!message) return;
+
+        addMessage("Tú", message, "user");
+        input.value = "";
+
+        const res = await fetch("/chat", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({message})
+        });
+
+        const data = await res.json();
+        if (data.reply) {
+            addMessage("Bot", data.reply, "bot");
+        } else {
+            addMessage("Bot", "Error: " + data.error, "bot");
+        }
+    }
+
+    function addMessage(sender, text, cls) {
+        const div = document.createElement("div");
+        div.className = "msg " + cls;
+        div.innerHTML = `<strong>${sender}:</strong> ${text}`;
+        document.getElementById("messages").appendChild(div);
+    }
+</script>
+</body>
+</html>
