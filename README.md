@@ -9,6 +9,19 @@ Puedes ver una versión desplegada en Render aquí, pero **ya no está funcionan
  
 Si deseas probarlo por tu cuenta, puedes generar tu propia clave desde la [plataforma de OpenAI](https://platform.openai.com/account/api-keys) y añadirla como variable de entorno `OPENAI_API_KEY`. 
  
+## ⚠️ Posible error de tokens 
+ 
+Si ejecutas la aplicación sin una cuenta válida o sin saldo disponible, es probable que encuentres un error como este:
+
+```
+**Bot:** Error: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+```
+
+Este error indica que has agotado tu cuota actual de tokens. Debes:
+- Verificar tu plan en OpenAI
+- Revisar tus detalles de facturación
+- Añadir crédito a tu cuenta
+ 
 ## 📂 Estructura del proyecto 
  
 ``` 
