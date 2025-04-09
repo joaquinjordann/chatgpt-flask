@@ -25,13 +25,16 @@ Este error indica que has agotado tu cuota actual de tokens. Debes:
 ## 📂 Estructura del proyecto 
  
 ``` 
-chatgpt-flask/ 
-├── app.py           # Lógica principal del servidor Flask 
-├── requirements.txt # Dependencias del proyecto 
-├── runtime.txt      # Versión de Python para Render 
-├── Procfile         # Comando para producción 
-├── templates/ 
-│   └── index.html   # Interfaz web del chatbot 
+chatgpt-flask/
+├── app.py               # Lógica principal del servidor Flask
+├── requirements.txt     # Dependencias del proyecto
+├── runtime.txt          # Versión de Python para Render
+├── Procfile             # Comando para producción
+├── README.md            # Documentación del proyecto
+├── img/
+│   └── chatgpt-flask.png  # Captura del chatbot funcionando
+├── templates/
+│   └── index.html       # Interfaz web del chatbot
 ``` 
  
 ## ⚙️ Requisitos 
